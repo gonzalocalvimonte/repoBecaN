@@ -1,0 +1,3 @@
+partido;equipo;resultado
+1;argentina;GANADOR
+2;polonia;EMPATE

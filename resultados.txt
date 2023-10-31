@@ -1,0 +1,3 @@
+numeroPartido;equipo1;equipo2 golesEquipo1;golesEquipo2
+1;argentina;arabia saudita;1;2
+2;polonia;mexico;0;0

@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package proyectoIntMaven;
-
 import com.opencsv.bean.CsvBindByPosition;
 
 /**
@@ -14,21 +13,24 @@ import com.opencsv.bean.CsvBindByPosition;
 public class Pronostico {
 
 	@CsvBindByPosition(position = 0)
-    private Partido partido;
+    private int partidoNumero;
     @CsvBindByPosition(position = 1)
     private Equipo equipo;
     @CsvBindByPosition(position = 2)
     private ResultadoEnum resultado;
    
     
-    public Pronostico(Partido partido, Equipo equipo, ResultadoEnum resultado) {
-    	this.partido= partido;
+    public Pronostico(int partidoNum, Equipo equipo, ResultadoEnum resultado) {
+    	this.partidoNumero= partidoNum;
     	this.equipo=equipo;
     	this.resultado=resultado;
     }
-    public Partido getPartido() {
-		return partido;
+    
+	public int getPartidoNumero() {
+		return partidoNumero;
 	}
+
+
 	public Equipo getEquipo() {
 		return equipo;
 	}
@@ -38,10 +40,12 @@ public class Pronostico {
 	}
 
 	public int puntos() {
+		int numeroDePartido = Partido.getPartidoId();
         int punto = 0;
-        if (resultado == partido.resultado(equipo)) {
+        if( getPartidoNumero() == numeroDePartido) {
+        if (resultado == Partido.resultado(equipo)) {
             punto += 1;
-        }
+        }}
         return punto;
     }
 

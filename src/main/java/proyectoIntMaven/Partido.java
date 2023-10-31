@@ -21,16 +21,18 @@ public class Partido {
     private int golesEquipo2;
     @CsvBindByPosition(position = 3)
     private Equipo equipo2;
+    @CsvBindByPosition(position = 3)
+    private static int partidoId;
     
-   
     private String ganador;
     private String perdedor;
 
     public Partido() {
     }
 
-    public Partido(Equipo equipo1, Equipo equipo2, int golesEquipo1, int golesEquipo2) {
-        this.equipo1 = equipo1;
+    public Partido(int partidoNum, Equipo equipo1, Equipo equipo2, int golesEquipo1, int golesEquipo2) {
+        this.partidoId = partidoNum;
+    	this.equipo1 = equipo1;
         this.equipo2 = equipo2;
         this.golesEquipo1 = golesEquipo1;
         this.golesEquipo2 = golesEquipo2;
@@ -60,5 +62,10 @@ public class Partido {
             this.perdedor = equipo1.getNombre();
         }
     }
+
+	public static int getPartidoId() {
+		return partidoId;
+	}
+
 
 }

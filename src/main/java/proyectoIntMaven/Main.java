@@ -7,7 +7,7 @@ public class Main {
 	    public static void main(String[] args) {
 	        // TODO code application logic here
 	    	//equipos
-	        Equipo eq1 = new Equipo("LosPeques ", "Alp2 ");
+	        /*Equipo eq1 = new Equipo("LosPeques ", "Alp2 ");
 	        Equipo eq2 = new Equipo("Messi ", " LosBuenos");
 	        Equipo eq3 = new Equipo("Lalal", "asdas");
 	        System.out.println("Equipo 1 " + eq1.getNombre() + eq1.getDescripcion());
@@ -31,7 +31,7 @@ public class Main {
 	        pronosticos.add(pron1);
 	        pronosticos.add(pron2);
 	        pronosticos.add(pron3);
-	        pronosticos.add(pron4);
+	        pronosticos.add(pron4);*/
 	        //RONDA
 	        Ronda ronda1 = new Ronda("1",partidos,pronosticos);
 	        int puntos = 0;
