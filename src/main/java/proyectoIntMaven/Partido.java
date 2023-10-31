@@ -12,17 +12,17 @@ import com.opencsv.bean.CsvBindByPosition;
  * @author FraNko
  */
 public class Partido {
-
 	@CsvBindByPosition(position = 0)
+	private static int partidoId;
+	@CsvBindByPosition(position = 1)
     private Equipo equipo1;
-    @CsvBindByPosition(position = 1)
-    private int golesEquipo1;
     @CsvBindByPosition(position = 2)
+    private int golesEquipo1;
+    @CsvBindByPosition(position = 3)
     private int golesEquipo2;
-    @CsvBindByPosition(position = 3)
+    @CsvBindByPosition(position = 4)
     private Equipo equipo2;
-    @CsvBindByPosition(position = 3)
-    private static int partidoId;
+   
     
     private String ganador;
     private String perdedor;
