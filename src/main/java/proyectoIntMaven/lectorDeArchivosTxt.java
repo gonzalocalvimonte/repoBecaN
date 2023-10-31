@@ -40,7 +40,7 @@ public class lectorDeArchivosTxt {
         arrayDePartidos = partidos;
         
         System.out.println("lista partidos");
-        System.out.println(partidos);
+        System.out.print(partidos);
         
         String [] datosPronostico1 = listaPronosticos.get(1).split(";");
 		String [] datosPronostico2 = listaPronosticos.get(2).split(";");

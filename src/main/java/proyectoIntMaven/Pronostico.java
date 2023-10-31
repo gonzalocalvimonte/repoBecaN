@@ -39,14 +39,10 @@ public class Pronostico {
 		return resultado;
 	}
 
-	public int puntos() {
-		int numeroDePartido = Partido.getPartidoId();
-        int punto = 0;
-        if( getPartidoNumero() == numeroDePartido) {
-        if (resultado == Partido.resultado(equipo)) {
-            punto += 1;
-        }}
-        return punto;
-    }
+	@Override
+	public String toString() {
+		return "[partidoNumero=" + partidoNumero + ", equipo=" + equipo + ", resultado=" + resultado + "]";
+	}
+
 
 }

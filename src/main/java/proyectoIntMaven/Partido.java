@@ -13,7 +13,7 @@ import com.opencsv.bean.CsvBindByPosition;
  */
 public class Partido {
 	@CsvBindByPosition(position = 0)
-	private static int partidoId;
+	private int partidoId;
 	@CsvBindByPosition(position = 1)
     private Equipo equipo1;
     @CsvBindByPosition(position = 2)
@@ -63,8 +63,14 @@ public class Partido {
         }
     }
 
-	public static int getPartidoId() {
+	public int getPartidoId() {
 		return partidoId;
+	}
+
+	@Override
+	public String toString() {
+		return "[partidoId=" + partidoId + ", equipo1=" + equipo1 + ", golesEquipo1=" + golesEquipo1
+				+ ", golesEquipo2=" + golesEquipo2 + ", equipo2=" + equipo2 + "]";
 	}
 
 
