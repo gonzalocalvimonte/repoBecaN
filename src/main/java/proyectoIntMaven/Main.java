@@ -9,8 +9,8 @@ public class Main {
 	    public static void main(String[] args) {
 	    	//lectorDeArchivosTxt archPartidos = new lectorDeArchivosTxt("C:\\Users\\jijau\\OneDrive\\Escritorio\\Partidos.txt");
 	    	//lectorDeArchivosTxt archPronosticos = new lectorDeArchivosTxt("C:\\Users\\jijau\\OneDrive\\Escritorio\\Pronosticos.txt");
-	    	ProcesaPartido p1 = new ProcesaPartido("C:\\Users\\jijau\\OneDrive\\Escritorio\\Partidos.txt");
-	    	ProcesaPronostico p2 = new ProcesaPronostico("C:\\Users\\jijau\\OneDrive\\Escritorio\\Pronosticos.txt");
+	    	ProcesaPartido p1 = new ProcesaPartido("../repoBecaN/resultados.txt");
+	    	ProcesaPronostico p2 = new ProcesaPronostico("../repoBecaN/pronosticos.txt");
 	    	//List<String> datosPartidos = archPartidos.parsearArchivo();
 	    	//List<String> datosPronosticos = archPronosticos.parsearArchivo();
 	        ArrayList<Partido> listaPartidos = p1.procesaDatos();

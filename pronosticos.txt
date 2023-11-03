@@ -1,6 +1,4 @@
 partido;equipo;resultado
-1;argentina;GANADOR
-2;polonia;EMPATE
 1;argentina;PERDEDOR
 2;polonia;EMPATE
 3;qatar;GANADOR

@@ -17,7 +17,7 @@ public class ProcesaPronostico {
 		String[] linea;
 		//Recorremos la lista con los datos de los partidos
 		//Si el archivo tiene encabezado comenzamos desde i=1;
-		for(int i=0;i<datosPronostico.size();i++) {
+		for(int i=1;i<datosPronostico.size();i++) {
 			linea = datosPronostico.get(i).split(";");
 			//Cada linea tiene la siguiente informacion: partidoID,equipo,resultado(prediccion)
 			//Creamos el Partido y lo agregamos al ArrayList}

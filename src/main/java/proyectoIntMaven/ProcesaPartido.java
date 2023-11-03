@@ -17,7 +17,7 @@ public class ProcesaPartido {
 		String[] linea;
 		//Recorremos la lista con los datos de los partidos
 		//Si el archivo tiene encabezado comenzamos desde i=1;
-		for(int i=0;i<datosPartido.size();i++) {
+		for(int i=1;i<datosPartido.size();i++) {
 			String lineaLimpia = datosPartido.get(i).toUpperCase();
 			linea = lineaLimpia.split(";");
 			//Cada linea tiene la siguiente informacion: partidoID,equipo1,equipo1,golesEquipo1,golesEquipo2
