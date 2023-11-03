@@ -1,3 +1,15 @@
 partido;equipo;resultado
 1;argentina;GANADOR
 2;polonia;EMPATE
+1;argentina;PERDEDOR
+2;polonia;EMPATE
+3;qatar;GANADOR
+4;ecuador;GANADOR
+5;gales;PERDEDOR
+6;iran;EMPATE
+7;polonia;EMPATE
+8;tunez;GANADOR
+9;australia;GANADOR
+10;croacia;GANADOR
+11;japon;PERDEDOR
+12;corea del norte;EMPATE

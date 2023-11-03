@@ -1,3 +1,13 @@
 numeroPartido;equipo1;equipo2 golesEquipo1;golesEquipo2
 1;argentina;arabia saudita;1;2
 2;polonia;mexico;0;0
+3;holanda;qatar;2;0
+4;ecuador;senegal;1;2
+5;gales;inglaterra;0;3
+6;iran;estados unidos;0;1
+7;polonia;argentina;0;2
+8;tunez;francia;1;0
+9;australia;dinamarca;1;0
+10;croacia;alemania;2;4
+11;japon;españa;2;1
+12;corea del norte;portugal;2;1

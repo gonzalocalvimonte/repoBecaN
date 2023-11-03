@@ -15,14 +15,14 @@ public class Main {
 	    	//List<String> datosPronosticos = archPronosticos.parsearArchivo();
 	        ArrayList<Partido> listaPartidos = p1.procesaDatos();
 	        ArrayList<Pronostico> listaPronostico = p2.procesaDatos();
-	    	for(int i=0; i<listaPartidos.size();i++) {
-	        	System.out.println(listaPartidos.get(i));
-	        }
-	        for(int i=0; i<listaPronostico.size();i++) {
-	        	System.out.println(listaPronostico.get(i));
-	        }
+	    	//for(int i=0; i<listaPartidos.size();i++) {
+	        //	System.out.println(listaPartidos.get(i));
+	        //}
+	        //for(int i=0; i<listaPronostico.size();i++) {
+	        //	System.out.println(listaPronostico.get(i));
+	        //}
 	        Ronda ronda1 = new Ronda("1",listaPartidos,listaPronostico);
-	        System.out.println(ronda1.puntos());
+	        System.out.println("Pronosticos acertados en la ronda 1: "+ronda1.puntos());
 	        
 	    }
 
