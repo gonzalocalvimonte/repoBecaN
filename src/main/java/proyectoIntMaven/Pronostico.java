@@ -12,11 +12,9 @@ import com.opencsv.bean.CsvBindByPosition;
  */
 public class Pronostico {
 
-	@CsvBindByPosition(position = 0)
+	private int idPersona;
     private int partidoNumero;
-    @CsvBindByPosition(position = 1)
     private Equipo equipo;
-    @CsvBindByPosition(position = 2)
     private ResultadoEnum resultado;
    
     

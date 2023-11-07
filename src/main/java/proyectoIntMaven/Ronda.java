@@ -16,9 +16,11 @@ public class Ronda {
     private String nro;
     private ArrayList<Partido> partidos;
     private ArrayList<Pronostico> pronosticos;
+    private ArrayList<Persona> personas;
     
-    public Ronda(String numeroRonda, ArrayList<Partido> partidos, ArrayList<Pronostico> pronosticos) {
+    public Ronda(String numeroRonda, ArrayList<Persona> personas ,ArrayList<Partido> partidos, ArrayList<Pronostico> pronosticos) {
     	this.nro=numeroRonda;
+    	this.personas=personas;
     	this.partidos=partidos;
     	this.pronosticos=pronosticos;
     	//CREAR UNA CALSE LECTOR DE ARCHIVO Y USARLA DENTRO DE RONDA PARA OBTENER LOS DATOS.
@@ -38,6 +40,11 @@ public class Ronda {
         }
         return puntosAcum;
     }
+    
+    
+    
+    
+    
     //CREAR UN METODO getDatos para inicializar partidos y pronosticos. 
     public String toString() {
     	String cad="";

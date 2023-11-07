@@ -1,13 +1,13 @@
-numeroPartido;equipo1;equipo2 golesEquipo1;golesEquipo2
-1;argentina;arabia saudita;1;2
-2;polonia;mexico;0;0
-3;holanda;qatar;2;0
-4;ecuador;senegal;1;2
-5;gales;inglaterra;0;3
-6;iran;estados unidos;0;1
-7;polonia;argentina;0;2
-8;tunez;francia;1;0
-9;australia;dinamarca;1;0
-10;croacia;alemania;2;4
-11;japon;españa;2;1
-12;corea del norte;portugal;2;1
+numeroPartido,numeroDeRonda,equipo1,equipo2,golesEquipo1,golesEquipo2
+1,1,Catar,Ecuador,0,2
+2,1,Senegal,Países Bajos,0,2
+3,1,Argentina,Arabia Saudita,1,2
+4,1,México,Polonia,0,0
+5,2,España,Alemania,1,1
+6,2,Senegal,Japón,2,0
+7,2,Inglaterra,Irán,2,0
+8,2,Bélgica,Canadá,1,0
+9,3,Francia,Australia,2,1
+10,3,Dinamarca,Túnez,2,1
+11,3,Portugal,Uruguay,2,1
+12,3,Corea del Sur,Ghana,2,0

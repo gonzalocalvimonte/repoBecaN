@@ -13,17 +13,14 @@ import com.opencsv.bean.CsvBindByPosition;
  */
 public class Partido {
 	//ATRIBUTOS
-	@CsvBindByPosition(position = 0)
+
 	//private int partidoId;
 	private static int cantPartidos = 0; // llevamos la cuenta de todos los partidos que creamos.
 	private int partidoId ; // asignamos el id al partido  a medida que creamos partidos.
-	@CsvBindByPosition(position = 1)
-    private Equipo equipo1;
-    @CsvBindByPosition(position = 2)
-    private int golesEquipo1;
-    @CsvBindByPosition(position = 3)
+	private int numeroDeRonda;
+    private Equipo equipo1;   
+    private int golesEquipo1;  
     private int golesEquipo2;
-    @CsvBindByPosition(position = 4)
     private Equipo equipo2;
     private String ganador;
     private String perdedor;
@@ -31,10 +28,11 @@ public class Partido {
     public Partido() {
     }
 
-    public Partido(int pID,Equipo equipo1, Equipo equipo2, int golesEquipo1, int golesEquipo2) {
+    public Partido(int pID,int numeroDeRonda,Equipo equipo1, Equipo equipo2, int golesEquipo1, int golesEquipo2) {
         cantPartidos += 1; // cada vez que creamos un partido incrementamos la cantidad en 1.
     	this.partidoId = pID;
-        this.equipo1 = equipo1;
+        this.numeroDeRonda=numeroDeRonda;
+    	this.equipo1 = equipo1;
         this.equipo2 = equipo2;
         this.golesEquipo1 = golesEquipo1;
         this.golesEquipo2 = golesEquipo2;
