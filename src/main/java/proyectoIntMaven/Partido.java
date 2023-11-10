@@ -50,6 +50,9 @@ public class Partido {
 	public static int getCantPartidos() {
 		return cantPartidos;//Devuelve la cantidad de partidos que hay creados.
 	}
+	public int getNumRonda() {
+		return this.numeroDeRonda;
+	}
 	//OTROS METODOS
     public ResultadoEnum resultado(Equipo equipo1) {
         ganador();

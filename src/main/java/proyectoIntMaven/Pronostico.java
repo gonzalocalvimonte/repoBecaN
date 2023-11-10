@@ -18,8 +18,9 @@ public class Pronostico {
     private ResultadoEnum resultado;
    
     
-    public Pronostico(int partidoNum, Equipo equipo, ResultadoEnum resultado) {
+    public Pronostico(int partidoNum,int idPersona, Equipo equipo, ResultadoEnum resultado) {
     	this.partidoNumero= partidoNum;
+    	this.idPersona=idPersona;
     	this.equipo=equipo;
     	this.resultado=resultado;
     }
@@ -36,7 +37,9 @@ public class Pronostico {
 	public ResultadoEnum getResultado() {
 		return resultado;
 	}
-
+	public int getIdPersona() {
+		return this.idPersona;
+	}
 	@Override
 	public String toString() {
 		return "[partidoNumero=" + partidoNumero + ", equipo=" + equipo + ", resultado=" + resultado + "]";

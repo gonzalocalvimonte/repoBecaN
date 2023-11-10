@@ -6,12 +6,18 @@ import java.util.List;
 
 public class ProcesaPronostico {
 	private LectorDeArchivo archivoPartidos;
-	ArrayList<Pronostico> listaPronosticos;
+	private ArrayList<Pronostico> listaPronosticos;
+	private ArrayList<Persona> listaPersonas;
 	
 	public ProcesaPronostico(String rutaOrigen) {
 		this.archivoPartidos = new LectorDeArchivo(rutaOrigen);
-		listaPronosticos= new ArrayList<>();
+		this.listaPronosticos= new ArrayList<>();
+		this.listaPersonas= new ArrayList<>();
 	}
+	public ArrayList<Persona> getListaPersonas(){
+		return this.listaPersonas;
+	}
+	
 	public ArrayList<Pronostico> procesaDatos(){
 		//Este metodo nos devuelve el array de pronosticos para pasarlo a la ronda
 		List<String> datosPronostico = this.archivoPartidos.parsearArchivo();
@@ -21,32 +27,49 @@ public class ProcesaPronostico {
 		for(int i=1;i<datosPronostico.size();i++) {
 			linea = datosPronostico.get(i).split(",");
 			
-			//Cada linea tiene la siguiente informacion: partidoID,equipo,resultado(prediccion)
+			//Cada linea tiene la siguiente informacion: partidoID,equipo,resultado(prediccion) numeroDePartido;idPersona;persona;equipo;resultado
 			//Creamos el Partido y lo agregamos al ArrayList}
-			listaPronosticos.add(creaPronostico(Integer.parseInt(linea[0]),linea[3],ResultadoEnum.valueOf(linea[4])));
+			this.listaPronosticos.add(creaPronostico(Integer.parseInt(linea[0]),Integer.parseInt(linea[1]),linea[3],ResultadoEnum.valueOf(linea[4])));
 		}
+		listaPersonas(); // creamos la lista de personas que participan
+		//asignaPronosticos(); // Asignamos a las distintas personas sus pronosticos correspondientes.
 		return this.listaPronosticos;
 	}
-	private Pronostico creaPronostico(int pID, String equipo, ResultadoEnum resultado ) {
-		return new Pronostico(pID,new Equipo(equipo), resultado);
+	private Pronostico creaPronostico(int partidoNum,int pID, String equipo, ResultadoEnum resultado ) {
+		return new Pronostico(partidoNum,pID,new Equipo(equipo), resultado);
 	}
 	
-	public ArrayList<Persona> listaPersonas(){
+	private void listaPersonas(){//Creamos la lista de personas que participan a partir del archivo pronosticos.txt
 		List<String> datosPronostico = this.archivoPartidos.parsearArchivo();
 		String[] linea;
-		ArrayList<Persona> personas = new ArrayList<Persona>();
 		int cantidadDePersonas = this.listaPronosticos.size() / Partido.getCantPartidos();
  		
 		for (int i= 1; i < datosPronostico.size() ; i += Partido.getCantPartidos()) {
 			linea = datosPronostico.get(i).split(",");
-			
-			personas.add(creaPersona(Integer.parseInt(linea[1]),linea[2]));
-				
+			this.listaPersonas.add(creaPersona(Integer.parseInt(linea[1]),linea[2]));
 		}
-		return personas;
 	}
-	
 	private Persona creaPersona(int idPersona, String nombre) {
 		return new Persona(idPersona,nombre);
 	}
+	//Metodo que asigna a cada persona los pronosticos correspondientes.
+	/*private void asignaPronosticos() {
+		System.out.println("tamaño de listaPronostico "+this.listaPronosticos.size());
+		boolean bandera;
+		int j=0,aux=0;
+		for(int i=0;i<this.listaPersonas.size();i++) {
+			j=aux;
+			bandera=true;
+			while(j<this.listaPronosticos.size() && bandera){
+				if(this.listaPronosticos.get(j).getIdPersona() == this.listaPersonas.get(i).AGREGAR METODO QUE DEVUELVE ID DE LA PERSONA) {
+					this.listaPersonas.get(i).METODO QUE AGREGA UN PRONOSTICO A PERSONA);//Agregamos a la persona i, el pronostico j
+				}else {
+					aux=j;
+					bandera=false;
+				}
+				j++;
+			}
+		}
+	}
+	*/
 }

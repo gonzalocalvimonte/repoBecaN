@@ -8,7 +8,7 @@ public class ProcesaPartido {
 	private LectorDeArchivo archivoPartidos;
 	ArrayList<Partido> listaPartidos;
 	private int cantidadDeRondas;
-	
+	private boolean bandera=false; // la ocupamos para saber si el metodo procesaDatos() fue ejecutado.	
 	
 	public ProcesaPartido(String rutaOrigen) {
 		this.archivoPartidos = new LectorDeArchivo(rutaOrigen);
@@ -27,24 +27,38 @@ public class ProcesaPartido {
 			//Creamos el Partido y lo agregamos al ArrayList}
 			listaPartidos.add(creaPartido(Integer.parseInt(linea[0]),Integer.parseInt(linea[1]),linea[2],linea[3],Integer.parseInt(linea[4]),Integer.parseInt(linea[5])));
 		}
+		this.bandera= true;
 		return this.listaPartidos;
 	}
-	
-	/*public ArrayList<Partido> partidosPorRonda(int num){
-		if(num > 0 && num <= this.cantidadDeRondas) {
-			
-		}
-	}*/
-
-	/*
-	 * private List<String> limpiarDatos(List<String> datos){ for(int i=0;
-	 * i<datos.size();i++) { datos.get(i). datos.get(i)=datos.get(i).toUpperCase();
-	 * } return datos;
-	 */
-	//}
 	private Partido creaPartido(int pID,int numRonda,String eq1, String eq2, int cantGoles1 , int cantGoles2 ) {
 		return new Partido(pID, numRonda,new Equipo(eq1), new Equipo(eq2), cantGoles1, cantGoles2);
 	}
 	//Habria que agregar un metodo que verifique la cantidad de campos que tiene cada linea y ocuparla en el metodo procesaDatos().
-	
+	public ArrayList<Partido> partidosPorRonda(int num){ // este metodo tenia que devolver la cantidad de partidos o la lista de partidos que se juegan en esa ronda ?
+		ArrayList<Partido> partidosRonda = null;
+		if(num > 0 && num <= this.cantidadDeRondas && this.bandera) {
+			partidosRonda = new ArrayList<Partido>();
+			for(int i=0;i<this.listaPartidos.size();i++) {
+				if(this.listaPartidos.get(i).getNumRonda() == num) {
+					partidosRonda.add(this.listaPartidos.get(i));
+				}
+			}
+		}else {
+			System.out.println("No existe la ronda numero: "+num); // o this.listaPartidos es null.
+		}
+		return partidosRonda;
+	}
+	public int cantRondas() {
+		this.cantidadDeRondas=0;
+		if(this.bandera) {
+			for(int i=0;i<this.listaPartidos.size()-1;i++) {
+				if(this.listaPartidos.get(i).getNumRonda() != this.listaPartidos.get(i+1).getNumRonda()) {
+					this.cantidadDeRondas++;
+				}
+			}
+			this.cantidadDeRondas++;//sumamos uno porque en el ciclo cuenta la cantidad de veces que cambia el numero de rondas.
+		}
+		return this.cantidadDeRondas;
+	}
+
 }
