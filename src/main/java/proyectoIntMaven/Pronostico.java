@@ -29,6 +29,9 @@ public class Pronostico {
 		return partidoNumero;
 	}
 
+	public void setIdPersona(int idPersona) {
+		this.idPersona = idPersona;
+	}
 
 	public Equipo getEquipo() {
 		return equipo;

@@ -21,11 +21,32 @@ public class Persona {
 	 * Metodo sumarPunt(){
 	 * le suma 1 a cantidadPuntos}
 	 */
+ 
 	
 	@Override
 	public String toString() {
 		return "Persona [nombre=" + nombre + ", idPersona=" + idPersona + "]";
 	}
+
+	public int getIdPersona() {
+		return idPersona;
+	}
+
+
+	public void setIdPersona(int idPersona) {
+		this.idPersona = idPersona;
+	}
+
+
+	public ArrayList<Pronostico> getPronosticos() {
+		return pronosticos;
+	}
+
+
+	public void setPronosticos(ArrayList<Pronostico> pronosticos) {
+		this.pronosticos = pronosticos;
+	}
+
 
 	public String getNombre() {
 		return nombre;

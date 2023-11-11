@@ -53,7 +53,7 @@ public class ProcesaPronostico {
 		return new Persona(idPersona,nombre);
 	}
 	//Metodo que asigna a cada persona los pronosticos correspondientes.
-	/*private void asignaPronosticos() {
+	private void asignaPronosticos() {
 		System.out.println("tamaño de listaPronostico "+this.listaPronosticos.size());
 		boolean bandera;
 		int j=0,aux=0;
@@ -61,8 +61,8 @@ public class ProcesaPronostico {
 			j=aux;
 			bandera=true;
 			while(j<this.listaPronosticos.size() && bandera){
-				if(this.listaPronosticos.get(j).getIdPersona() == this.listaPersonas.get(i).AGREGAR METODO QUE DEVUELVE ID DE LA PERSONA) {
-					this.listaPersonas.get(i).METODO QUE AGREGA UN PRONOSTICO A PERSONA);//Agregamos a la persona i, el pronostico j
+				if(this.listaPronosticos.get(j).getIdPersona() == this.listaPersonas.get(i).getIdPersona()) {
+					this.listaPersonas.get(i).getPronosticos().add(this.listaPronosticos.get(j));//Agregamos a la persona i, el pronostico j
 				}else {
 					aux=j;
 					bandera=false;
@@ -71,5 +71,5 @@ public class ProcesaPronostico {
 			}
 		}
 	}
-	*/
+
 }

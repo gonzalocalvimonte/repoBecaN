@@ -8,7 +8,7 @@ public class ProcesaPartido {
 	private LectorDeArchivo archivoPartidos;
 	ArrayList<Partido> listaPartidos;
 	private int cantidadDeRondas;
-	private boolean bandera=false; // la ocupamos para saber si el metodo procesaDatos() fue ejecutado.	
+	private boolean bandera = false; // la ocupamos para saber si el metodo procesaDatos() fue ejecutado.	
 	
 	public ProcesaPartido(String rutaOrigen) {
 		this.archivoPartidos = new LectorDeArchivo(rutaOrigen);
