@@ -16,17 +16,48 @@ public class Ronda {
     private String nro;
     private ArrayList<Partido> partidos;
     private ArrayList<Pronostico> pronosticos;
-    private ArrayList<Persona> personas;
+    private Persona persona; 
     
-    public Ronda(String numeroRonda, ArrayList<Persona> personas ,ArrayList<Partido> partidos, ArrayList<Pronostico> pronosticos) {
+    public Ronda(String numeroRonda, Persona persona ,ArrayList<Partido> partidos, ArrayList<Pronostico> pronosticos) {
     	this.nro=numeroRonda;
-    	this.personas=personas;
+    	this.persona=persona;
     	this.partidos=partidos;
     	this.pronosticos=pronosticos;
     	//CREAR UNA CALSE LECTOR DE ARCHIVO Y USARLA DENTRO DE RONDA PARA OBTENER LOS DATOS.
     	//ACA LLAMAMOS AL METODO getDatos.
     }
     public int puntos(){
+    	int puntosAcum = 0;
+    	System.out.println(partidos.size()+ " soy el syso de Ronda linea 31");
+    	System.out.println(persona.getPronosticos().size() + " soy el syso de Ronda linea 32");
+        if (partidos.size()==persona.getPronosticos().size()) {// Solo se ejecuta si el numero de partidos coincide con el numero de pronosticos.
+            for (int i = 0; i < partidos.size(); i++) {
+                if(partidos.get(i).resultado(persona.getPronosticos().get(i).getEquipo()) == persona.getPronosticos().get(i).getResultado()) {
+                	puntosAcum++;
+                }
+            }
+        }else {
+        	System.out.println("No coincide el numero de partidos con el numero de pronosticos.");
+        	return -1;
+        }
+        return puntosAcum;
+    }
+    /*public int puntos(){
+    	int puntosAcum = 0;
+        if (partidos.size()==persona.getPronosticos().size()) {// Solo se ejecuta si el numero de partidos coincide con el numero de pronosticos.
+            for (int i = 0; i < partidos.size(); i++) {
+                if(partidos.get(i).resultado(persona.getPronosticos().get(i).getEquipo()) == persona.getPronosticos().get(i).getResultado()) {
+                	puntosAcum++;
+                }
+            }
+        }else {
+        	System.out.println("No coincide el numero de partidos con el numero de pronosticos.");
+        	return -1;
+        }
+        return puntosAcum;
+    }
+    
+    /*public int puntos(){
     	int puntosAcum = 0;
         if (partidos.size()==pronosticos.size()) {// Solo se ejecuta si el numero de partidos coincide con el numero de pronosticos.
             for (int i = 0; i < partidos.size(); i++) {
@@ -39,7 +70,7 @@ public class Ronda {
         	return -1;
         }
         return puntosAcum;
-    }
+    }*/
     
     
     

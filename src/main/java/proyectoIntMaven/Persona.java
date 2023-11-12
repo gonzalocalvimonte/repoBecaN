@@ -10,10 +10,11 @@ public class Persona {
 	private ArrayList<Pronostico> pronosticos;
 	private int cantidadPuntos = 0;
 	
-	public Persona(int idPersona, String nombre) {
+	public Persona(int idPersona, String nombre, ArrayList<Pronostico>pronosPers ) {
 		cantPersonas += 1; // cada vez que creamos un partido incrementamos la cantidad en 1.
     	this.idPersona = idPersona;
 		this.nombre= nombre;
+		this.pronosticos = pronosPers ;
 	}
 
 	
@@ -23,13 +24,17 @@ public class Persona {
 	 */
  
 	
-	@Override
-	public String toString() {
-		return "Persona [nombre=" + nombre + ", idPersona=" + idPersona + "]";
-	}
+	
 
 	public int getIdPersona() {
 		return idPersona;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Persona [nombre=" + nombre + ", idPersona=" + idPersona + ", pronosticos=" + pronosticos
+				+ ", cantidadPuntos=" + cantidadPuntos + "]";
 	}
 
 
@@ -37,15 +42,15 @@ public class Persona {
 		this.idPersona = idPersona;
 	}
 
-
+	public void setPronosticos(ArrayList<Pronostico>pronosticos) {
+		this.pronosticos = pronosticos;
+	}
 	public ArrayList<Pronostico> getPronosticos() {
 		return pronosticos;
 	}
 
 
-	public void setPronosticos(ArrayList<Pronostico> pronosticos) {
-		this.pronosticos = pronosticos;
-	}
+	
 
 
 	public String getNombre() {

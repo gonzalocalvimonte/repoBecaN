@@ -15,7 +15,8 @@ public class Main {
 	        ArrayList<Partido> listaPartidos = p1.procesaDatos();
 	        ArrayList<Pronostico> listaPronostico = p2.procesaDatos();
 	        ArrayList<Persona> listaPersonas = p2.getListaPersonas();
-	        
+	           
+	        System.out.println(listaPersonas);
 	        System.out.println("Cantidad de rondas: "+p1.cantRondas());
 	        System.out.println("Partidos de la ronda 2: "+p1.partidosPorRonda(2).size());
 			/*
@@ -24,11 +25,12 @@ public class Main {
 			 * System.out.println("--Pronosticos de persona: "+i);
 			 * System.out.println(listaPersonas.get(i).getPronosticos()); }
 			 */
-	    	
-	        /*Ronda ronda1 = new Ronda("1",listaPartidos,listaPronostico);
-	        System.out.println("Pronosticos acertados en la ronda 1: "+ronda1.puntos());
-	        */
-	    }
+	    	for(int i = 0 ; i < p1.cantRondas(); i++) {
+	    	System.out.println(listaPersonas.get(i).getPronosticos() + "soy el syso del main linea 29");
+	        Ronda ronda = new Ronda(Integer.toString(i),listaPersonas.get(i),listaPartidos,listaPersonas.get(i).getPronosticos());
+	        System.out.println("Pronosticos acertados en la ronda 1: " + ronda.puntos());
+	        
+	    }}
 
 }
 
