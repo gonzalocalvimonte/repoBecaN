@@ -11,20 +11,29 @@ import com.opencsv.bean.CsvBindByPosition;
  * @author FraNko
  */
 public class Pronostico {
-
+	private int numeroDeRonda;
 	private int idPersona;
     private int partidoNumero;
     private Equipo equipo;
     private ResultadoEnum resultado;
    
     
-    public Pronostico(int partidoNum,int idPersona, Equipo equipo, ResultadoEnum resultado) {
+    public Pronostico(int numeroRonda,int partidoNum,int idPersona, Equipo equipo, ResultadoEnum resultado) {
+    	this.numeroDeRonda= numeroRonda;
     	this.partidoNumero= partidoNum;
     	this.idPersona=idPersona;
     	this.equipo=equipo;
     	this.resultado=resultado;
     }
     
+	public int getNumeroDeRonda() {
+		return numeroDeRonda;
+	}
+
+	public void setNumeroDeRonda(int numeroDeRonda) {
+		this.numeroDeRonda = numeroDeRonda;
+	}
+
 	public int getPartidoNumero() {
 		return partidoNumero;
 	}
@@ -45,7 +54,7 @@ public class Pronostico {
 	}
 	@Override
 	public String toString() {
-		return "[partidoNumero=" + partidoNumero + ", equipo=" + equipo + ", resultado=" + resultado + "]";
+		return "[numeroDeRonda=" + numeroDeRonda  +", partidoNumero=" + partidoNumero + ", equipo=" + equipo + ", resultado=" + resultado + "]";
 	}
 
 

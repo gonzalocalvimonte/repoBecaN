@@ -12,35 +12,39 @@ import java.util.ArrayList;
  * @author FraNko
  */
 public class Ronda {
-    
-    private String nro;
+	 
+    private int cantRondas;
     private ArrayList<Partido> partidos;
     private ArrayList<Pronostico> pronosticos;
     private Persona persona; 
     
-    public Ronda(String numeroRonda, Persona persona ,ArrayList<Partido> partidos, ArrayList<Pronostico> pronosticos) {
-    	this.nro=numeroRonda;
+    public Ronda(int numeroRondas, Persona persona ,ArrayList<Partido> partidos, ArrayList<Pronostico> pronosticos) {
+    	this.cantRondas =numeroRondas;
     	this.persona=persona;
     	this.partidos=partidos;
     	this.pronosticos=pronosticos;
     	//CREAR UNA CALSE LECTOR DE ARCHIVO Y USARLA DENTRO DE RONDA PARA OBTENER LOS DATOS.
     	//ACA LLAMAMOS AL METODO getDatos.
     }
-    public int puntos(){
+    @SuppressWarnings("unused")
+	public int puntos(int ronda){
+    	int reset = 0;
     	int puntosAcum = 0;
-    	System.out.println(partidos.size()+ " soy el syso de Ronda linea 31");
-    	System.out.println(persona.getPronosticos().size() + " soy el syso de Ronda linea 32");
-        if (partidos.size()==persona.getPronosticos().size()) {// Solo se ejecuta si el numero de partidos coincide con el numero de pronosticos.
-            for (int i = 0; i < partidos.size(); i++) {
-                if(partidos.get(i).resultado(persona.getPronosticos().get(i).getEquipo()) == persona.getPronosticos().get(i).getResultado()) {
-                	puntosAcum++;
-                }}
-        }else {
-        	System.out.println("No coincide el numero de partidos con el numero de pronosticos.");
-        	return -1;
-        }
-        return puntosAcum;
-    }
+    	int puntosRonda=0;
+for(int i = 1; i < cantRondas + 1; i++) {
+            	for(int j=0 ; j <partidos.size(); j++) {
+        			if(partidos.get(j).getNumRonda() == ronda && persona.getPronosticos().get(j).getNumeroDeRonda() == ronda) {
+                
+        					if(partidos.get(j).resultado(persona.getPronosticos().get(j).getEquipo()) == persona.getPronosticos().get(j).getResultado()) {
+        						puntosAcum++;
+        						puntosRonda++;
+        					}}}
+            	return puntosRonda;
+            	
+				}
+        
+            	return puntosAcum;
+            	}
     /*public int puntos(){
     	int puntosAcum = 0;
         if (partidos.size()==persona.getPronosticos().size()) {// Solo se ejecuta si el numero de partidos coincide con el numero de pronosticos.
@@ -78,9 +82,9 @@ public class Ronda {
     //CREAR UN METODO getDatos para inicializar partidos y pronosticos. 
     public String toString() {
     	String cad="";
-    	cad+="Ronda numero: "+this.nro;
+    	cad+="Ronda numero: "+this.cantRondas;
     	cad+=" cantidad de partidos jugados: "+this.partidos.size();
-    	cad+=" puntos: "+puntos();
+    	
     	return cad;
     }
 }

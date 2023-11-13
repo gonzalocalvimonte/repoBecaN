@@ -29,14 +29,14 @@ public class ProcesaPronostico {
 			
 			//Cada linea tiene la siguiente informacion: partidoID,equipo,resultado(prediccion) numeroDePartido;idPersona;persona;equipo;resultado
 			//Creamos el Pronostico y lo agregamos al ArrayList}
-			this.listaPronosticos.add(creaPronostico(Integer.parseInt(linea[0]),Integer.parseInt(linea[1]),linea[3],ResultadoEnum.valueOf(linea[4])));
+			this.listaPronosticos.add(creaPronostico(Integer.parseInt(linea[0]),Integer.parseInt(linea[1]),Integer.parseInt(linea[2]),linea[4],ResultadoEnum.valueOf(linea[5])));
 		}
 		listaPersonas(); // creamos la lista de personas que participan
 		asignaPronosticos(); // Asignamos a las distintas personas sus pronosticos correspondientes.
 		return this.listaPronosticos;
 	}
-	private Pronostico creaPronostico(int partidoNum,int pID, String equipo, ResultadoEnum resultado ) {
-		return new Pronostico(partidoNum,pID,new Equipo(equipo), resultado);
+	private Pronostico creaPronostico(int numeroRonda,int partidoNum,int pID, String equipo, ResultadoEnum resultado ) {
+		return new Pronostico(numeroRonda,partidoNum,pID,new Equipo(equipo), resultado);
 	}
 	
 	private void listaPersonas(){//Creamos la lista de personas que participan a partir del archivo pronosticos.txt
@@ -46,7 +46,7 @@ public class ProcesaPronostico {
  		
 		for (int i= 1; i < datosPronostico.size() ; i += Partido.getCantPartidos()) {
 			linea = datosPronostico.get(i).split(",");
-			this.listaPersonas.add(creaPersona(Integer.parseInt(linea[1]),linea[2]));
+			this.listaPersonas.add(creaPersona(Integer.parseInt(linea[2]),linea[3]));
 		}
 	}
 	private Persona creaPersona(int idPersona, String nombre) {
