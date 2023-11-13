@@ -54,15 +54,16 @@ public class Partido {
 		return this.numeroDeRonda;
 	}
 	//OTROS METODOS
-    public ResultadoEnum resultado(Equipo equipo1) {
+    public ResultadoEnum resultado(Equipo equipo) {
         ganador();
-        if (equipo1.getNombre().equals(this.ganador)) {
+        if (equipo.getNombre().equals(this.ganador)) {
             return ResultadoEnum.GANADOR;
-        } else if (equipo1.getNombre().equals(this.perdedor)) {
+        } else if (equipo.getNombre().equals(this.perdedor)) {
             return ResultadoEnum.PERDEDOR;
         }
         return ResultadoEnum.EMPATE;
-    }
+        }
+    
 
     private void ganador() {
         if (golesEquipo1 > golesEquipo2) {
@@ -71,6 +72,10 @@ public class Partido {
         } else if (golesEquipo1 < golesEquipo2) {
             this.ganador = equipo2.getNombre();
             this.perdedor = equipo1.getNombre();
+        } else if (golesEquipo1 == golesEquipo2) {
+        	this.ganador = null;
+            this.perdedor = null;
+           
         }
     }
 

@@ -34,8 +34,7 @@ public class Ronda {
             for (int i = 0; i < partidos.size(); i++) {
                 if(partidos.get(i).resultado(persona.getPronosticos().get(i).getEquipo()) == persona.getPronosticos().get(i).getResultado()) {
                 	puntosAcum++;
-                }
-            }
+                }}
         }else {
         	System.out.println("No coincide el numero de partidos con el numero de pronosticos.");
         	return -1;

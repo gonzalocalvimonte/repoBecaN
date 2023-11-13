@@ -15,10 +15,14 @@ public class Main {
         
         System.out.println("Cantidad de rondas: "+p1.cantRondas());
         System.out.println("Partidos de la ronda 2: "+p1.partidosPorRonda(2).size());
-        
+        System.out.println();
 		 for (int i=0; i < listaPersonas.size(); i++) {
 			 System.out.println("--Pronosticos de persona: "+i);
-			 System.out.println(listaPersonas.get(i).getPronosticos());//mostramos pronosticos de cada persona
+			 
+			 Ronda ronda1 = new Ronda("3",listaPersonas.get(i),listaPartidos, listaPersonas.get(i).getPronosticos());
+			 System.out.println(listaPartidos);
+			 System.out.println(listaPersonas.get(i).getPronosticos());
+		    	System.out.println("Pronosticos acertados por " + listaPersonas.get(i).getNombre()+ " :" +ronda1.puntos());
 		 }
 		/*Ronda ronda1 = new Ronda("1",listaPartidos,listaPronostico);
     	System.out.println("Pronosticos acertados en la ronda 1: "+ronda1.puntos());

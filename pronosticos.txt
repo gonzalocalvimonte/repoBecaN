@@ -1,37 +1,37 @@
 numeroDePartido;idPersona;persona;equipo;resultado
 1,1,pepe,Ecuador,GANADOR
-2,1,pepe,Países Bajos,PERDEDOR
-3,1,pepe, Argentina,EMPATE
-4,1,pepe,México,GANADOR
+2,1,pepe,Países Bajos,GANADOR
+3,1,pepe,Argentina,EMPATE
+4,1,pepe,México,EMPATE
 5,1,pepe,Alemania,EMPATE
-6,1,pepe, Senegal,GANADOR
+6,1,pepe,Senegal,GANADOR
 7,1,pepe,Irán,PERDEDOR
-8,1,pepe, Bélgica,PERDEDOR
-9,1,pepe, Francia,GANADOR
-10,1,pepe, Dinamarca,PERDEDOR
-11,1,pepe, Uruguay,GANADOR
-12,1,pepe, Corea del Sur,EMPATE
+8,1,pepe,Bélgica,PERDEDOR
+9,1,pepe,Francia,GANADOR
+10,1,pepe,Dinamarca,PERDEDOR
+11,1,pepe,Uruguay,GANADOR
+12,1,pepe,Corea del Sur,EMPATE
 1,2,sara,Ecuador,PERDEDOR
-2,2,sara, Países Bajos,EMPATE
-3,2,sara, Argentina,EMPATE
+2,2,sara,Países Bajos,EMPATE
+3,2,sara,Argentina,EMPATE
 4,2,sara,México,PERDEDOR
 5,2,sara,Alemania,GANADOR
-6,2,sara, Senegal,PERDEDOR
+6,2,sara,Senegal,PERDEDOR
 7,2,sara,Irán,EMPATE
-8,2,sara, Bélgica,EMPATE
-9,2,sara, Francia,PERDEDOR
-10,2,sara, Dinamarca,GANADOR
-11,2,sara, Uruguay,EMPATE
-12,2,sara, Corea del Sur,GANADOR
+8,2,sara,Bélgica,EMPATE
+9,2,sara,Francia,PERDEDOR
+10,2,sara,Dinamarca,GANADOR
+11,2,sara,Uruguay,EMPATE
+12,2,sara,Corea del Sur,GANADOR
 1,3,tito,Ecuador,PERDEDOR
-2,3,tito, Países Bajos,EMPATE
-3,3,tito, Argentina,EMPATE
+2,3,tito,Países Bajos,EMPATE
+3,3,tito,Argentina,EMPATE
 4,3,tito,México,PERDEDOR
 5,3,tito,Alemania,GANADOR
-6,3,tito, Senegal,PERDEDOR
+6,3,tito,Senegal,PERDEDOR
 7,3,tito,Irán,GANADOR
-8,3,tito, Bélgica,EMPATE
-9,3,tito, Francia,EMPATE
-10,3,tito, Dinamarca,GANADOR
-11,3,tito, Uruguay,PERDEDOR
-12,3,tito, Corea del Sur,EMPATE
+8,3,tito,Bélgica,EMPATE
+9,3,tito,Francia,EMPATE
+10,3,tito,Dinamarca,GANADOR
+11,3,tito,Uruguay,PERDEDOR
+12,3,tito,Corea del Sur,EMPATE
