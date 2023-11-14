@@ -54,7 +54,7 @@ public class ProcesaPronostico {
 	}
 	//Metodo que asigna a cada persona los pronosticos correspondientes.
 	private void asignaPronosticos() {
-		System.out.println("tamaño de listaPronostico "+this.listaPronosticos.size());
+		
 		boolean bandera;
 		int j=0,aux=0;
 		for(int i=0;i<this.listaPersonas.size();i++) {

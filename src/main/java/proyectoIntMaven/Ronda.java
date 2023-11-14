@@ -27,25 +27,26 @@ public class Ronda {
     	//ACA LLAMAMOS AL METODO getDatos.
     }
     @SuppressWarnings("unused")
-	public int puntos(int ronda){
-    	int reset = 0;
-    	int puntosAcum = 0;
+	public int puntosPorRonda(int ronda){
+    	
     	int puntosRonda=0;
 for(int i = 1; i < cantRondas + 1; i++) {
             	for(int j=0 ; j <partidos.size(); j++) {
         			if(partidos.get(j).getNumRonda() == ronda && persona.getPronosticos().get(j).getNumeroDeRonda() == ronda) {
                 
         					if(partidos.get(j).resultado(persona.getPronosticos().get(j).getEquipo()) == persona.getPronosticos().get(j).getResultado()) {
-        						puntosAcum++;
+        						
         						puntosRonda++;
         					}}}
             	return puntosRonda;
             	
 				}
         
-            	return puntosAcum;
+            	return puntosRonda;
             	}
-    /*public int puntos(){
+    
+
+    public int puntos(){
     	int puntosAcum = 0;
         if (partidos.size()==persona.getPronosticos().size()) {// Solo se ejecuta si el numero de partidos coincide con el numero de pronosticos.
             for (int i = 0; i < partidos.size(); i++) {
@@ -60,25 +61,7 @@ for(int i = 1; i < cantRondas + 1; i++) {
         return puntosAcum;
     }
     
-    /*public int puntos(){
-    	int puntosAcum = 0;
-        if (partidos.size()==pronosticos.size()) {// Solo se ejecuta si el numero de partidos coincide con el numero de pronosticos.
-            for (int i = 0; i < partidos.size(); i++) {
-                if(partidos.get(i).resultado(pronosticos.get(i).getEquipo()) == pronosticos.get(i).getResultado() ) {
-                	puntosAcum++;
-                }
-            }
-        }else {
-        	System.out.println("No coincide el numero de partidos con el numero de pronosticos.");
-        	return -1;
-        }
-        return puntosAcum;
-    }*/
-    
-    
-    
-    
-    
+  
     //CREAR UN METODO getDatos para inicializar partidos y pronosticos. 
     public String toString() {
     	String cad="";
