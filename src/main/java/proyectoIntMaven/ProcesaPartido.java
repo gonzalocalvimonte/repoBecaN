@@ -2,7 +2,7 @@ package proyectoIntMaven;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import excepciones.CamposInvalidosException;
 public class ProcesaPartido {
 	
 	private LectorDeArchivo archivoPartidos;
@@ -15,20 +15,29 @@ public class ProcesaPartido {
 		listaPartidos= new ArrayList<>();
 	}
 	public ArrayList<Partido> procesaDatos(){
-		//Este metodo nos devuelve el array de pronosticos para pasarlo a la ronda
-		List<String> datosPartido = this.archivoPartidos.parsearArchivo();
-		String[] linea;
-		//Recorremos la lista con los datos de los partidos
-		//Si el archivo tiene encabezado comenzamos desde i=1;
-		for(int i=1;i<datosPartido.size();i++) {
-			String lineaLimpia = datosPartido.get(i).toUpperCase();
-			linea = lineaLimpia.split(",");
-			//Cada linea tiene la siguiente informacion: partidoID,numeroDeRonda,equipo1,equipo1,golesEquipo1,golesEquipo2
-			//Creamos el Partido y lo agregamos al ArrayList}
-			listaPartidos.add(creaPartido(Integer.parseInt(linea[0]),Integer.parseInt(linea[1]),linea[2],linea[3],Integer.parseInt(linea[4]),Integer.parseInt(linea[5])));
+		try {
+			//Este metodo nos devuelve el array de pronosticos para pasarlo a la ronda
+			List<String> datosPartido = this.archivoPartidos.parsearArchivo();
+			String[] linea;
+			//Recorremos la lista con los datos de los partidos
+			//Si el archivo tiene encabezado comenzamos desde i=1;
+			for(int i=1;i<datosPartido.size();i++) {
+				String lineaLimpia = datosPartido.get(i).toUpperCase();
+				linea = lineaLimpia.split(",");
+				verificaCampos(linea.length);
+				verificaGoles(linea[4]);
+				verificaGoles(linea[5]);
+				//Cada linea tiene la siguiente informacion: partidoID,numeroDeRonda,equipo1,equipo1,golesEquipo1,golesEquipo2
+				//Creamos el Partido y lo agregamos al ArrayList}
+				listaPartidos.add(creaPartido(Integer.parseInt(linea[0]),Integer.parseInt(linea[1]),linea[2],linea[3],Integer.parseInt(linea[4]),Integer.parseInt(linea[5])));
+			}
+			this.bandera= true;
+			return this.listaPartidos;
+		}catch(CamposInvalidosException e) {
+			System.out.println("Error: alguna linea del archivo partidos tiene una cantidad de campos invalida.");
+			e.getMessage();
 		}
-		this.bandera= true;
-		return this.listaPartidos;
+		return null;
 	}
 	private Partido creaPartido(int pID,int numRonda,String eq1, String eq2, int cantGoles1 , int cantGoles2 ) {
 		return new Partido(pID, numRonda,new Equipo(eq1), new Equipo(eq2), cantGoles1, cantGoles2);
@@ -60,5 +69,16 @@ public class ProcesaPartido {
 		}
 		return this.cantidadDeRondas;
 	}
-
+	private void verificaCampos(int cantCampos) throws CamposInvalidosException {
+		if(cantCampos!=6) {
+			throw new CamposInvalidosException("Cantidad de campos invalida.");
+		}
+	}
+	private void verificaGoles(String goles) {
+		try {
+			Integer.parseInt(goles);
+		}catch(NumberFormatException e){
+			System.out.println("El campo de goles no tiene un numero entero.");
+		}
+	}
 }

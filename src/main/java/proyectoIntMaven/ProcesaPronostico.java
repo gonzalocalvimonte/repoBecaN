@@ -2,6 +2,7 @@ package proyectoIntMaven;
 
 import java.util.ArrayList;
 import java.util.List;
+import excepciones.CamposInvalidosException;
 
 public class ProcesaPronostico {
 	private LectorDeArchivo archivoPartidos;
@@ -18,22 +19,27 @@ public class ProcesaPronostico {
 	}
 	
 	public ArrayList<Pronostico> procesaDatos(){
-		//Este metodo nos devuelve el array de pronosticos para pasarlo a la ronda
-		List<String> datosPronostico = this.archivoPartidos.parsearArchivo();
-		String[] linea;
-		//Recorremos la lista con los datos de los partidos
-		//Si el archivo tiene encabezado comenzamos desde i=1;
-		for(int i=1;i<datosPronostico.size();i++) {
-			String lineaLimpia = datosPronostico.get(i).toUpperCase();
-			linea = lineaLimpia.split(",");
-			
-			//Cada linea tiene la siguiente informacion: partidoID,equipo,resultado(prediccion) numeroDePartido;idPersona;persona;equipo;resultado
-			//Creamos el Pronostico y lo agregamos al ArrayList}
-			this.listaPronosticos.add(creaPronostico(Integer.parseInt(linea[0]),Integer.parseInt(linea[1]),Integer.parseInt(linea[2]),linea[4],ResultadoEnum.valueOf(linea[5])));
+		try {
+			//Este metodo nos devuelve el array de pronosticos para pasarlo a la ronda
+			List<String> datosPronostico = this.archivoPartidos.parsearArchivo();
+			String[] linea;
+			//Recorremos la lista con los datos de los partidos
+			//Si el archivo tiene encabezado comenzamos desde i=1;
+			for(int i=1;i<datosPronostico.size();i++) {
+				String lineaLimpia = datosPronostico.get(i).toUpperCase();
+				linea = lineaLimpia.split(",");
+				verificaCampos(linea.length);
+				//Cada linea tiene la siguiente informacion: partidoID,equipo,resultado(prediccion) numeroDePartido;idPersona;persona;equipo;resultado
+				//Creamos el Pronostico y lo agregamos al ArrayList}
+				this.listaPronosticos.add(creaPronostico(Integer.parseInt(linea[0]),Integer.parseInt(linea[1]),Integer.parseInt(linea[2]),linea[4],ResultadoEnum.valueOf(linea[5])));
+			}
+			listaPersonas(); // creamos la lista de personas que participan
+			asignaPronosticos(); // Asignamos a las distintas personas sus pronosticos correspondientes.
+			return this.listaPronosticos;
+		}catch(CamposInvalidosException e) {
+			System.out.println("Error: alguna linea del archivo pronosticos tiene una cantidad de campos invalida.");
 		}
-		listaPersonas(); // creamos la lista de personas que participan
-		asignaPronosticos(); // Asignamos a las distintas personas sus pronosticos correspondientes.
-		return this.listaPronosticos;
+		return null;
 	}
 	private Pronostico creaPronostico(int numeroRonda,int partidoNum,int pID, String equipo, ResultadoEnum resultado ) {
 		return new Pronostico(numeroRonda,partidoNum,pID,new Equipo(equipo), resultado);
@@ -71,4 +77,11 @@ public class ProcesaPronostico {
 			}
 		}
 	}
+	private void verificaCampos(int cantCampos) throws CamposInvalidosException{
+		if(cantCampos!=6) {
+			throw new CamposInvalidosException("La cantidad de campos no es valida.");
+		}
+	}
 }
+	
+

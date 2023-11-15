@@ -1,5 +1,5 @@
 numeroPartido,numeroDeRonda,equipo1,equipo2,golesEquipo1,golesEquipo2
-1,1,Catar,Ecuador,0,2
+1,1,Catar,Ecuador,0,1
 2,1,Senegal,Países Bajos,0,2
 3,1,Argentina,Arabia Saudita,1,2
 4,1,México,Polonia,0,0

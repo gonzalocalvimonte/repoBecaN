@@ -1,5 +1,6 @@
 package proyectoIntMaven;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -25,6 +26,7 @@ public class LectorDeArchivo {
 			return datosArchivo; // Devuelve una matriz con todos los datos del archivo
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
+			System.out.println("Hubo problemas al leer el archivo.");
 			e.printStackTrace();
 		}
 		return null; // Si es null es porque hubo un error

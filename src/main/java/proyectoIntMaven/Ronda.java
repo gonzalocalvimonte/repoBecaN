@@ -12,7 +12,8 @@ import java.util.ArrayList;
  * @author FraNko
  */
 public class Ronda {
-	 
+	
+	private String numRonda;
     private int cantRondas;
     private ArrayList<Partido> partidos;
     private ArrayList<Pronostico> pronosticos;
@@ -23,27 +24,27 @@ public class Ronda {
     	this.persona=persona;
     	this.partidos=partidos;
     	this.pronosticos=pronosticos;
-    	//CREAR UNA CALSE LECTOR DE ARCHIVO Y USARLA DENTRO DE RONDA PARA OBTENER LOS DATOS.
-    	//ACA LLAMAMOS AL METODO getDatos.
     }
     @SuppressWarnings("unused")
-	public int puntosPorRonda(int ronda){
-    	
-    	int puntosRonda=0;
-for(int i = 1; i < cantRondas + 1; i++) {
-            	for(int j=0 ; j <partidos.size(); j++) {
-        			if(partidos.get(j).getNumRonda() == ronda && persona.getPronosticos().get(j).getNumeroDeRonda() == ronda) {
-                
-        					if(partidos.get(j).resultado(persona.getPronosticos().get(j).getEquipo()) == persona.getPronosticos().get(j).getResultado()) {
-        						
-        						puntosRonda++;
-        					}}}
-            	return puntosRonda;
-            	
+    //Corregir: Ronda calcula el puntaje de SU ronda, no de todas las rondas
+    //Una idea seria hacer un metodo puntosXRonda, donde en su interior itere el array de personas y calcule el puntaje de cada persona
+    //Alli dentro podria llamarse a un metodo puntosXPersona(p), que calcula los puntos de la persona ´p´ que recibe por parametro.
+	public int puntosPorRonda(int ronda) {
+		int puntosRonda = 0;
+		for (int i = 1; i < cantRondas + 1; i++) {
+			for (int j = 0; j < partidos.size(); j++) {
+				if (partidos.get(j).getNumRonda() == ronda
+						&& persona.getPronosticos().get(j).getNumeroDeRonda() == ronda) {
+					if (partidos.get(j).resultado(persona.getPronosticos().get(j).getEquipo()) == persona
+							.getPronosticos().get(j).getResultado()) {
+						puntosRonda++;
+					}
 				}
-        
-            	return puntosRonda;
-            	}
+			}
+			return puntosRonda;
+		}
+		return puntosRonda;
+	}
     
 
     public int puntos(){
