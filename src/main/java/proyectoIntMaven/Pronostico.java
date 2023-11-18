@@ -13,7 +13,7 @@ import com.opencsv.bean.CsvBindByPosition;
 public class Pronostico {
 	private int numeroDeRonda;
 	private int idPersona;
-    private int partidoNumero;
+    private int partidoNumero;//Funciona como el id de partido
     private Equipo equipo;
     private ResultadoEnum resultado;
    

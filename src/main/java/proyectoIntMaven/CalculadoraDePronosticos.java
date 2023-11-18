@@ -14,24 +14,21 @@ public class CalculadoraDePronosticos {
 	
 	
 	public void calculadora(){
-	ProcesaPartido p1 = new ProcesaPartido(archivoPartido);
-	ProcesaPronostico p2 = new ProcesaPronostico(archivoPronostico);
+		ProcesaPartido p1 = new ProcesaPartido(archivoPartido);
+		ProcesaPronostico p2 = new ProcesaPronostico(archivoPronostico);
 
-    ArrayList<Partido> listaPartidos = p1.procesaDatos();
-    ArrayList<Pronostico> listaPronostico = p2.procesaDatos();
-    ArrayList<Persona> listaPersonas = p2.getListaPersonas();
-    
-   
-	 for (int i=0; i < listaPersonas.size(); i++) {
-		 System.out.println("Pronosticos de " + listaPersonas.get(i).getNombre());
-		 Ronda ronda = new Ronda(p1.cantRondas(),listaPersonas.get(i),listaPartidos, listaPersonas.get(i).getPronosticos());
-		 for(int j=0; j < p1.cantRondas(); j++) {
-			 
-
-	   System.out.println("Pronosticos acertados por " + listaPersonas.get(i).getNombre()+ " en la ronda "+ (j + 1) + ": " +ronda.puntosPorRonda(j+1));
-	 }
-		 System.out.println("Pronosticos acertados por " + listaPersonas.get(i).getNombre()+ " en todas las rondas : " +ronda.puntos());}
-
-
-    }
+		ArrayList<Partido> listaPartidos = p1.procesaDatos();// Aqui estan los partidos de TODAS rondas
+		ArrayList<Pronostico> listaPronostico = p2.procesaDatos();
+		ArrayList<Persona> listaPersonas = p2.getListaPersonas();
+		ArrayList<Ronda> listaRondas = new ArrayList<>();
+		int cantRondas = p1.cantRondas();
+		System.out.println("Cant rondas: " + cantRondas);
+		for (int i = 0; i < cantRondas; i++) {
+			int j = i + 1;//j indica el numero de ronda, comienza en 1.
+			listaRondas.add(new Ronda(String.valueOf(j), listaPersonas, listaPartidos, listaPronostico));
 		}
+		for (int i = 0; i < listaRondas.size(); i++) {
+			listaRondas.get(i).mostrarPuntosRonda();
+		}
+	}
+}

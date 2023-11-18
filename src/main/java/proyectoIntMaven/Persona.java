@@ -9,7 +9,7 @@ public class Persona {
 	private static int cantPersonas = 0; // llevamos la cuenta de todos los partidos que creamos.
 	private int idPersona ; // asignamos el id al partido  a medida que creamos partidos.
 	private ArrayList<Pronostico> pronosticos;
-	private int cantidadPuntos = 0;
+	private int PuntosXRonda = 0;
 	
 	public Persona(int idPersona, String nombre) {
 		cantPersonas += 1; // cada vez que creamos un partido incrementamos la cantidad en 1.
@@ -26,6 +26,12 @@ public class Persona {
 	public int getIdPersona() {
 		return this.idPersona;
 	}
+	public int getPuntosXRonda() {
+		return this.PuntosXRonda;
+	}
+	public void setPuntosXRonda(int puntos) {
+		this.PuntosXRonda=puntos;
+	}
 	public ArrayList<Pronostico> getPronosticos(){
 		return this.pronosticos;
 	}
@@ -34,7 +40,10 @@ public class Persona {
 	}
 	@Override
 	public String toString() {
-		return "Persona [nombre=" + nombre + ", idPersona=" + idPersona + "]";
+		String cad="";
+		cad+="Nombre: "+this.nombre +" ID: "+this.idPersona+"\n";
+		cad+="Puntos: "+this.PuntosXRonda+"\n";
+		return cad;
 	}
 
 	

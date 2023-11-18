@@ -30,7 +30,7 @@ public class Partido {
 
     public Partido(int pID,int numeroDeRonda,Equipo equipo1, Equipo equipo2, int golesEquipo1, int golesEquipo2) {
         cantPartidos += 1; // cada vez que creamos un partido incrementamos la cantidad en 1.
-    	this.partidoId = pID;
+    	this.partidoId = pID;//El equivalente a esto es la variable numeroPartido en las demas clases.
         this.numeroDeRonda=numeroDeRonda;
     	this.equipo1 = equipo1;
         this.equipo2 = equipo2;
