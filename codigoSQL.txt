@@ -1,0 +1,80 @@
+create database apuestasDeportivas;
+
+use apuestasDeportivas;
+
+create table personas(
+idPersona int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+nombre varchar(50) NOT NULL,
+primary key(idPersona)
+);
+
+create table resultadosPartidos(
+idPartido int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+idRonda int(10) NOT NULL,
+equipo1 varchar(50) NOT NULL,
+equipo2 varchar(50) NOT NULL,
+golesEquipo1 int(10) NOT NULL,
+golesEquipo2 int(10) NOT NULL,
+primary key(idPartido)
+);
+
+create table pronosticos(
+idRonda int(10)  NOT NULL ,
+idPartido int(10) NOT NULL,
+idPersona int(10) NOT NULL,
+nombrePersona varchar(50) NOT NULL,
+equipo varchar(50) NOT NULL,
+resultado varchar(10) NOT NULL
+);
+
+insert into `resultadospartidos`(`idPartido`,`idRonda`,`equipo1`,`equipo2`,`golesEquipo1`,`golesEquipo2`)values
+(1,1,"Catar","Ecuador",0,1),
+(2,1,"Senegal","Países Bajos",0,2),
+(3,1,"Argentina","Arabia Saudita",1,2),
+(4,1,"México","Polonia",0,0),
+(5,2,"España","Alemania",1,1),
+(6,2,"Senegal","Japón",2,0),
+(7,2,"Inglaterra","Irán",2,0),
+(8,2,"Bélgica","Canadá",1,0),
+(9,3,"Francia","Australia",2,1),
+(10,3,"Dinamarca","Túnez",2,1),
+(11,3,"Portugal","Uruguay",2,1),
+(12,3,"Corea del Sur","Ghana",2,0);
+
+insert into `pronosticos`(`idRonda`,`idPartido`,`idPersona`,`nombrePersona`,`equipo`,`resultado`)values
+(1,1,1,"pepe","Ecuador","GANADOR"),
+(1,2,1,"pepe","Países Bajos","GANADOR"),
+(1,3,1,"pepe","Argentina","EMPATE"),
+(1,4,1,"pepe","México","EMPATE"),
+(2,5,1,"pepe","Alemania","EMPATE"),
+(2,6,1,"pepe","Senegal","GANADOR"),
+(2,7,1,"pepe","Irán","PERDEDOR"),
+(2,8,1,"pepe","Bélgica","PERDEDOR"),
+(3,9,1,"pepe","Francia","GANADOR"),
+(3,10,1,"pepe","Dinamarca","PERDEDOR"),
+(3,11,1,"pepe","Uruguay","GANADOR"),
+(3,12,1,"pepe","Corea del Sur","EMPATE"),
+(1,1,2,"sara","Ecuador","PERDEDOR"),
+(1,2,2,"sara","Países Bajos","EMPATE"),
+(1,3,2,"sara","Argentina","PERDEDOR"),
+(1,4,2,"sara","México","PERDEDOR"),
+(2,5,2,"sara","Alemania","EMPATE"),
+(2,6,2,"sara","Senegal","PERDEDOR"),
+(2,7,2,"sara","Irán","EMPATE"),
+(2,8,2,"sara","Bélgica","EMPATE"),
+(3,9,2,"sara","Francia","PERDEDOR"),
+(3,10,2,"sara","Dinamarca","GANADOR"),
+(3,11,2,"sara","Uruguay","EMPATE"),
+(3,12,2,"sara","Corea del Sur","GANADOR"),
+(1,1,3,"tito","Ecuador","PERDEDOR"),
+(1,2,3,"tito","Países Bajos","EMPATE"),
+(1,3,3,"tito","Argentina","EMPATE"),
+(1,4,3,"tito","México","PERDEDOR"),
+(2,5,3,"tito","Alemania","GANADOR"),
+(2,6,3,"tito","Senegal","GANADOR"),
+(2,7,3,"tito","Irán","GANADOR"),
+(2,8,3,"tito","Bélgica","EMPATE"),
+(3,9,3,"tito","Francia","EMPATE"),
+(3,10,3,"tito","Dinamarca","GANADOR"),
+(3,11,3,"tito","Uruguay","PERDEDOR"),
+(3,12,3,"tito","Corea del Sur","EMPATE")
