@@ -9,11 +9,11 @@ import java.util.ArrayList;
 
 import com.mysql.cj.xdevapi.Statement;
 
-import proyectoIntMaven.Equipo;
-import proyectoIntMaven.Partido;
-import proyectoIntMaven.Persona;
-import proyectoIntMaven.Pronostico;
-import proyectoIntMaven.ResultadoEnum;
+import logica.Equipo;
+import logica.Partido;
+import logica.Persona;
+import logica.Pronostico;
+import logica.ResultadoEnum;
 
 public class consultasDB {
 	static Connection conexion = null;
@@ -22,11 +22,6 @@ public class consultasDB {
     ArrayList<Pronostico> listaPronosticos;
     ArrayList<Persona> listaPersonas;
     
-    public static void main(String[] args) {
-		consultaPartidos();
-		consultaPronosticos();
-		consultaPersonas();
-	}
     
 	public static ArrayList<Partido> consultaPartidos() {
 		ArrayList<Partido> listaPartidos = null ;
@@ -93,7 +88,7 @@ public class consultasDB {
                 se.printStackTrace();
             }
         }
-        System.out.println(listaPartidos);
+       
 		return listaPartidos;
        
     }
@@ -164,7 +159,7 @@ public class consultasDB {
 	                se.printStackTrace();
 	            }
 	        }
-	        System.out.println(listaPronosticos);
+	       
 			return listaPronosticos;
 	       
 	}
@@ -228,7 +223,7 @@ public class consultasDB {
 	                se.printStackTrace();
 	            }
 	        }
-	        System.out.println(listaPersonas);
+	       
 			return listaPersonas;
 	       
 	}

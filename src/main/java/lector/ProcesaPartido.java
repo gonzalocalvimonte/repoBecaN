@@ -1,8 +1,10 @@
-package proyectoIntMaven;
+package lector;
 
 import java.util.ArrayList;
 import java.util.List;
 import excepciones.CamposInvalidosException;
+import logica.Equipo;
+import logica.Partido;
 public class ProcesaPartido {
 	
 	private LectorDeArchivo archivoPartidos;
@@ -57,18 +59,7 @@ public class ProcesaPartido {
 		}
 		return partidosRonda;
 	}
-	public int cantRondas() {
-		this.cantidadDeRondas=0;
-		if(this.bandera) {
-			for(int i=0;i<this.listaPartidos.size()-1;i++) {
-				if(this.listaPartidos.get(i).getNumRonda() != this.listaPartidos.get(i+1).getNumRonda()) {
-					this.cantidadDeRondas++;
-				}
-			}
-			this.cantidadDeRondas++;//sumamos uno porque en el ciclo cuenta la cantidad de veces que cambia el numero de rondas.
-		}
-		return this.cantidadDeRondas;
-	}
+	
 	private void verificaCampos(int cantCampos) throws CamposInvalidosException {
 		if(cantCampos!=6) {
 			throw new CamposInvalidosException("Cantidad de campos invalida.");

@@ -1,8 +1,14 @@
-package proyectoIntMaven;
+package lector;
 
 import java.util.ArrayList;
 import java.util.List;
 import excepciones.CamposInvalidosException;
+import logica.Equipo;
+import logica.Partido;
+import logica.Persona;
+import logica.Pronostico;
+import logica.ResultadoEnum;
+import logica.metodosUtilitarios;
 
 public class ProcesaPronostico {
 	private LectorDeArchivo archivoPartidos;
@@ -34,7 +40,7 @@ public class ProcesaPronostico {
 				this.listaPronosticos.add(creaPronostico(Integer.parseInt(linea[0]),Integer.parseInt(linea[1]),Integer.parseInt(linea[2]),linea[4],ResultadoEnum.valueOf(linea[5])));
 			}
 			listaPersonas(); // creamos la lista de personas que participan
-			asignaPronosticos(); // Asignamos a las distintas personas sus pronosticos correspondientes.
+			metodosUtilitarios.asignaPronosticos(this.listaPersonas,this.listaPronosticos); // Asignamos a las distintas personas sus pronosticos correspondientes.
 			return this.listaPronosticos;
 		}catch(CamposInvalidosException e) {
 			System.out.println("Error: alguna linea del archivo pronosticos tiene una cantidad de campos invalida.");
@@ -59,24 +65,8 @@ public class ProcesaPronostico {
 		return new Persona(idPersona,nombre);
 	}
 	//Metodo que asigna a cada persona los pronosticos correspondientes.
-	private void asignaPronosticos() {
-		
-		boolean bandera;
-		int j=0,aux=0;
-		for(int i=0;i<this.listaPersonas.size();i++) {
-			j=aux;
-			bandera=true;
-			while(j<this.listaPronosticos.size() && bandera){
-				if(this.listaPronosticos.get(j).getIdPersona() == this.listaPersonas.get(i).getIdPersona()) {
-					this.listaPersonas.get(i).agregaPronostico(this.listaPronosticos.get(j));//Agregamos a la persona i, el pronostico j
-				}else {
-					aux=j;
-					bandera=false;
-				}
-				j++;
-			}
-		}
-	}
+	
+	
 	private void verificaCampos(int cantCampos) throws CamposInvalidosException{
 		if(cantCampos!=6) {
 			throw new CamposInvalidosException("La cantidad de campos no es valida.");
