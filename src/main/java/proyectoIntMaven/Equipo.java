@@ -11,14 +11,14 @@ package proyectoIntMaven;
  */
 public class Equipo {
     private String nombre;
-    private String descripcion;
+    
 
     public Equipo() {
     }
 
     public Equipo(String nombre) {
         this.nombre = nombre;
-        this.descripcion = descripcion;
+       
     }
 
     public String getNombre() {
@@ -29,17 +29,9 @@ public class Equipo {
         this.nombre = nombre;
     }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
     @Override
     public String toString() {
-        return "Equipo{" + "nombre=" + nombre + ", descripcion=" + descripcion + '}';
+        return "Equipo{" + "nombre=" + nombre + '}';
     }
     
     

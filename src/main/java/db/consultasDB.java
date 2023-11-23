@@ -1,26 +1,38 @@
 package db;
 
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import com.mysql.cj.xdevapi.Statement;
+
+import proyectoIntMaven.Equipo;
+import proyectoIntMaven.Partido;
+import proyectoIntMaven.Persona;
+import proyectoIntMaven.Pronostico;
+import proyectoIntMaven.ResultadoEnum;
 
 public class consultasDB {
 	static Connection conexion = null;
     static java.sql.Statement consulta = null;
-	
+    ArrayList<Partido> listaPartidos ;
+    ArrayList<Pronostico> listaPronosticos;
+    ArrayList<Persona> listaPersonas;
     
     public static void main(String[] args) {
 		consultaPartidos();
+		consultaPronosticos();
+		consultaPersonas();
 	}
     
-	public static void consultaPartidos() {
-	
-
+	public static ArrayList<Partido> consultaPartidos() {
+		ArrayList<Partido> listaPartidos = null ;
+		
         try {
-
+        	listaPartidos= new ArrayList<>();
             // Abrir la conexión
             System.out.println("conectando a la base de datos...");
 
@@ -39,20 +51,31 @@ public class consultasDB {
             while (resultado.next()) {
                 // Pbtener el valor de cada columna
             	int idPartido = resultado.getInt("idPartido");
+            	int idRonda = resultado.getInt("idRonda");
             	String equipo1 = resultado.getString("equipo1");
             	String equipo2 = resultado.getString("equipo2");
-               
+            	int golesEquipo1 = resultado.getInt("golesEquipo1");
+            	int golesEquipo2 = resultado.getInt("golesEquipo2");
+            	
+            	
+            	Equipo equipo11 = new Equipo(equipo1);
+            	Equipo equipo22 = new Equipo(equipo2);
+            	
+            	Partido partido= new Partido(idPartido,idRonda,equipo11,equipo22,golesEquipo1,golesEquipo2);
+            	
+            	listaPartidos.add(partido);
+            	 
 
-                // Mostrar los valores obtenidos
-                System.out.print("id" + idPartido);
-                System.out.print(", equipo1: " + equipo1);
-                System.out.print(", equipo2: " + equipo2);
-            
+                
             }
+           
+           
             // Esto se utiliza par cerrar la conexión con la base de datos
             resultado.close();
             consulta.close();
             conexion.close();
+            System.out.println("Fin de la ejecucción");
+    		
         } catch (SQLException se) {
             // Execpción ante problemas de conexión
             se.printStackTrace();
@@ -70,7 +93,144 @@ public class consultasDB {
                 se.printStackTrace();
             }
         }
-        System.out.println("Fin de la ejecucción");
+        System.out.println(listaPartidos);
+		return listaPartidos;
+       
     }
+	
+	public static ArrayList<Pronostico> consultaPronosticos() {
+		ArrayList<Pronostico> listaPronosticos = null ;
+		
+		 try {
+	        	listaPronosticos= new ArrayList<>();
+	            // Abrir la conexión
+	            System.out.println("conectando a la base de datos...");
+
+	            conexion = DriverManager.getConnection(ConectorSQL.DB_URL, ConectorSQL.USER, ConectorSQL.PASS);
+
+	            // Ejecutar una consulta
+	            System.out.println("Creando statement...");
+	            consulta = conexion.createStatement();
+	            String sql;
+	            sql = "SELECT * FROM apuestasdeportivas.pronosticos";
+
+	            //En la variable resultado obtendremos las distintas filas que nos devolvió la base
+	            ResultSet resultado = consulta.executeQuery(sql);
+
+	            // Obtener las distintas filas de la consulta
+	            while (resultado.next()) {
+	                // Pbtener el valor de cada columna
+	            	
+	            	int idRonda = resultado.getInt("idRonda");
+	            	int idPartido = resultado.getInt("idPartido");
+	            	int idPersona = resultado.getInt("idPersona");
+	            	String nombrePersona = resultado.getString("nombrePersona");
+	            	String equipodb = resultado.getString("equipo");
+	            	String resultadoDB = resultado.getString("resultado").toUpperCase();
+	            	
+	            	
+	            	Equipo equipo = new Equipo(equipodb);
+	            	
+	            	
+	            	Pronostico pronostico= new Pronostico(idRonda,idPartido,idPersona,equipo,ResultadoEnum.valueOf(resultadoDB));
+	            	
+	            	listaPronosticos.add(pronostico);
+	            	 
+
+	                
+	            }
+	           
+	           
+	            // Esto se utiliza par cerrar la conexión con la base de datos
+	            resultado.close();
+	            consulta.close();
+	            conexion.close();
+	            System.out.println("Fin de la ejecucción");
+	    		
+	        } catch (SQLException se) {
+	            // Execpción ante problemas de conexión
+	            se.printStackTrace();
+	        } finally {
+	            // Esta sentencia es para que ante un problema con la base igual se cierren las conexiones
+	            try {
+	                if (consulta != null)
+	                    consulta.close();
+	            } catch (SQLException se2) {
+	            }
+	            try {
+	                if (conexion != null)
+	                    conexion.close();
+	            } catch (SQLException se) {
+	                se.printStackTrace();
+	            }
+	        }
+	        System.out.println(listaPronosticos);
+			return listaPronosticos;
+	       
 	}
+	
+	public static ArrayList<Persona> consultaPersonas(){
+		ArrayList<Persona> listaPersonas = null ;
+		
+		 try {
+	        	listaPersonas= new ArrayList<>();
+	            // Abrir la conexión
+	            System.out.println("conectando a la base de datos...");
+
+	            conexion = DriverManager.getConnection(ConectorSQL.DB_URL, ConectorSQL.USER, ConectorSQL.PASS);
+
+	            // Ejecutar una consulta
+	            System.out.println("Creando statement...");
+	            consulta = conexion.createStatement();
+	            String sql;
+	            sql = "SELECT * FROM apuestasdeportivas.personas";
+
+	            //En la variable resultado obtendremos las distintas filas que nos devolvió la base
+	            ResultSet resultado = consulta.executeQuery(sql);
+
+	            // Obtener las distintas filas de la consulta
+	            while (resultado.next()) {
+	                // Pbtener el valor de cada columna
+	            	
+	            	
+	            	int idPersona = resultado.getInt("idPersona");
+	            	String nombre = resultado.getString("nombre");
+
+	            	Persona persona= new Persona(idPersona,nombre);
+	            	
+	            	listaPersonas.add(persona);
+	            	 
+
+	                
+	            }
+	           
+	           
+	            // Esto se utiliza par cerrar la conexión con la base de datos
+	            resultado.close();
+	            consulta.close();
+	            conexion.close();
+	            System.out.println("Fin de la ejecucción");
+	    		
+	        } catch (SQLException se) {
+	            // Execpción ante problemas de conexión
+	            se.printStackTrace();
+	        } finally {
+	            // Esta sentencia es para que ante un problema con la base igual se cierren las conexiones
+	            try {
+	                if (consulta != null)
+	                    consulta.close();
+	            } catch (SQLException se2) {
+	            }
+	            try {
+	                if (conexion != null)
+	                    conexion.close();
+	            } catch (SQLException se) {
+	                se.printStackTrace();
+	            }
+	        }
+	        System.out.println(listaPersonas);
+			return listaPersonas;
+	       
+	}
+}
 
