@@ -16,6 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `parametros`
+--
+
+DROP TABLE IF EXISTS `parametros`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `parametros` (
+  `puntosPorAcierto` int NOT NULL,
+  `puntosExtra` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `parametros`
+--
+
+LOCK TABLES `parametros` WRITE;
+/*!40000 ALTER TABLE `parametros` DISABLE KEYS */;
+INSERT INTO `parametros` VALUES (3,5);
+/*!40000 ALTER TABLE `parametros` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `personas`
 --
 
@@ -62,7 +85,7 @@ CREATE TABLE `pronosticos` (
 
 LOCK TABLES `pronosticos` WRITE;
 /*!40000 ALTER TABLE `pronosticos` DISABLE KEYS */;
-INSERT INTO `pronosticos` VALUES (1,1,1,'pepe','Ecuador','GANADOR'),(1,2,1,'pepe','Países Bajos','GANADOR'),(1,3,1,'pepe','Argentina','EMPATE'),(1,4,1,'pepe','México','EMPATE'),(2,5,1,'pepe','Alemania','EMPATE'),(2,6,1,'pepe','Senegal','GANADOR'),(2,7,1,'pepe','Irán','PERDEDOR'),(2,8,1,'pepe','Bélgica','PERDEDOR'),(3,9,1,'pepe','Francia','GANADOR'),(3,10,1,'pepe','Dinamarca','PERDEDOR'),(3,11,1,'pepe','Uruguay','GANADOR'),(3,12,1,'pepe','Corea del Sur','EMPATE'),(1,1,2,'sara','Ecuador','PERDEDOR'),(1,2,2,'sara','Países Bajos','EMPATE'),(1,3,2,'sara','Argentina','PERDEDOR'),(1,4,2,'sara','México','PERDEDOR'),(2,5,2,'sara','Alemania','EMPATE'),(2,6,2,'sara','Senegal','PERDEDOR'),(2,7,2,'sara','Irán','EMPATE'),(2,8,2,'sara','Bélgica','EMPATE'),(3,9,2,'sara','Francia','PERDEDOR'),(3,10,2,'sara','Dinamarca','GANADOR'),(3,11,2,'sara','Uruguay','EMPATE'),(3,12,2,'sara','Corea del Sur','GANADOR'),(1,1,3,'tito','Ecuador','PERDEDOR'),(1,2,3,'tito','Países Bajos','EMPATE'),(1,3,3,'tito','Argentina','EMPATE'),(1,4,3,'tito','México','PERDEDOR'),(2,5,3,'tito','Alemania','GANADOR'),(2,6,3,'tito','Senegal','GANADOR'),(2,7,3,'tito','Irán','GANADOR'),(2,8,3,'tito','Bélgica','EMPATE'),(3,9,3,'tito','Francia','EMPATE'),(3,10,3,'tito','Dinamarca','GANADOR'),(3,11,3,'tito','Uruguay','PERDEDOR'),(3,12,3,'tito','Corea del Sur','EMPATE');
+INSERT INTO `pronosticos` VALUES (1,1,1,'pepe','Ecuador','GANADOR'),(1,2,1,'pepe','Países Bajos','GANADOR'),(1,3,1,'pepe','Argentina','PERDEDOR'),(1,4,1,'pepe','México','EMPATE'),(2,5,1,'pepe','Alemania','EMPATE'),(2,6,1,'pepe','Senegal','GANADOR'),(2,7,1,'pepe','Irán','PERDEDOR'),(2,8,1,'pepe','Bélgica','PERDEDOR'),(3,9,1,'pepe','Francia','GANADOR'),(3,10,1,'pepe','Dinamarca','PERDEDOR'),(3,11,1,'pepe','Uruguay','GANADOR'),(3,12,1,'pepe','Corea del Sur','EMPATE'),(1,1,2,'sara','Ecuador','PERDEDOR'),(1,2,2,'sara','Países Bajos','EMPATE'),(1,3,2,'sara','Argentina','PERDEDOR'),(1,4,2,'sara','México','PERDEDOR'),(2,5,2,'sara','Alemania','EMPATE'),(2,6,2,'sara','Senegal','PERDEDOR'),(2,7,2,'sara','Irán','EMPATE'),(2,8,2,'sara','Bélgica','EMPATE'),(3,9,2,'sara','Francia','PERDEDOR'),(3,10,2,'sara','Dinamarca','GANADOR'),(3,11,2,'sara','Uruguay','EMPATE'),(3,12,2,'sara','Corea del Sur','GANADOR'),(1,1,3,'tito','Ecuador','PERDEDOR'),(1,2,3,'tito','Países Bajos','EMPATE'),(1,3,3,'tito','Argentina','EMPATE'),(1,4,3,'tito','México','PERDEDOR'),(2,5,3,'tito','Alemania','GANADOR'),(2,6,3,'tito','Senegal','GANADOR'),(2,7,3,'tito','Irán','GANADOR'),(2,8,3,'tito','Bélgica','EMPATE'),(3,9,3,'tito','Francia','EMPATE'),(3,10,3,'tito','Dinamarca','GANADOR'),(3,11,3,'tito','Uruguay','PERDEDOR'),(3,12,3,'tito','Corea del Sur','EMPATE');
 /*!40000 ALTER TABLE `pronosticos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -103,4 +126,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-23 19:56:57
+-- Dump completed on 2023-11-24 23:18:49
