@@ -13,6 +13,9 @@ import javax.swing.JTextArea;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Scrollbar;
+import java.awt.ScrollPane;
+import javax.swing.JScrollBar;
 
 public class Interfaz extends JFrame {
 
@@ -58,12 +61,12 @@ public class Interfaz extends JFrame {
 		panel.add(lblNewLabel_2);
 		
 		JTextArea textArea = new JTextArea();
-		textArea.setRows(20);
+		textArea.setRows(100);
 		textArea.setWrapStyleWord(true);
 		textArea.setEditable(false);
+		textArea.setLineWrap(true);
 		contentPane.add(textArea, BorderLayout.CENTER);
-		textArea.setText("Hola que tal asdikjiojsdiaj iopasfjpiA SFJ IP´JP AS DF IASASD ASDD AS ASD ");//Como hago para que el texto se ajuste automaticamente dentro del textArea?
-		
+		textArea.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA.");
 		JLabel lblNewLabel = new JLabel("New label");
 		contentPane.add(lblNewLabel, BorderLayout.WEST);
 		
