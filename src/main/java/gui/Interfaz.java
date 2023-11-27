@@ -16,6 +16,11 @@ import java.awt.event.ActionEvent;
 import java.awt.Scrollbar;
 import java.awt.ScrollPane;
 import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
+import java.awt.FlowLayout;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.BoxLayout;
 
 public class Interfaz extends JFrame {
 
@@ -52,7 +57,7 @@ public class Interfaz extends JFrame {
 		
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.NORTH);
-		panel.setLayout(new GridLayout(1, 2, 0, 0));
+		panel.setLayout(new GridLayout(1, 2, 0, 15));
 		
 		JLabel lblNewLabel_1 = new JLabel("Puntos por acierto: ");
 		panel.add(lblNewLabel_1);
@@ -60,25 +65,31 @@ public class Interfaz extends JFrame {
 		JLabel lblNewLabel_2 = new JLabel("Puntos extra: ");
 		panel.add(lblNewLabel_2);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setRows(100);
-		textArea.setWrapStyleWord(true);
-		textArea.setEditable(false);
-		textArea.setLineWrap(true);
-		contentPane.add(textArea, BorderLayout.CENTER);
-		textArea.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA.");
-		JLabel lblNewLabel = new JLabel("New label");
-		contentPane.add(lblNewLabel, BorderLayout.WEST);
-		
-		JButton btnNewButton = new JButton("New button");
-		contentPane.add(btnNewButton, BorderLayout.EAST);
-		
 		JButton btnNewButton_1 = new JButton("Calcular");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//ACA TENEMOS QUE LLAMAR AL METODO CALCULADORA CUANDO CLICKEAMOS EN CALCULAR
 			}
 		});
 		contentPane.add(btnNewButton_1, BorderLayout.SOUTH);
+		
+		JPanel panel_1 = new JPanel();
+		contentPane.add(panel_1, BorderLayout.CENTER);
+		panel_1.setLayout(new BoxLayout(panel_1, BoxLayout.X_AXIS));
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setEditable(false);
+		textArea.setColumns(50);
+		textArea.setRows(10);
+		textArea.setWrapStyleWord(true);
+		textArea.setLineWrap(true);
+		//contentPane.add(textArea, BorderLayout.CENTER);
+		textArea.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eu tincidunt tortor aliquam nulla facilisi cras fermentum. Purus in massa tempor nec. Aliquet risus feugiat in ante. Pellentesque diam volutpat commodo sed. Sed blandit libero volutpat sed cras. Laoreet id donec ultrices tincidunt arcu non sodales neque. Nisi quis eleifend quam adipiscing. Eleifend quam adipiscing vitae proin sagittis nisl. Non tellus orci ac auctor augue mauris. Velit euismod in pellentesque massa placerat duis ultricies lacus sed. Mi ipsum faucibus vitae aliquet nec ullamcorper. Vitae nunc sed velit dignissim sodales ut. Netus et malesuada fames ac turpis egestas integer. Sapien nec sagittis aliquam malesuada bibendum arcu vitae. Id neque aliquam vestibulum morbi blandit cursus risus at ultrices. Turpis egestas maecenas pharetra convallis posuere morbi. Egestas tellus rutrum tellus pellentesque eu tincidunt. In fermentum posuere urna nec tincidunt praesent semper.");
+		//panel_1.add(textArea);
+		JScrollPane scrollPane = new JScrollPane(textArea);
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		panel_1.add(scrollPane);
 	}
 
 }
