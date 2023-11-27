@@ -20,7 +20,7 @@ public class CalculadoraDePronosticos {
     }
 	
 	
-	public void calculadora(){
+	public String calculadora(){
 		/*ProcesaPartido p1 = new ProcesaPartido(archivoPartido);
 		ProcesaPronostico p2 = new ProcesaPronostico(archivoPronostico);
 		
@@ -42,7 +42,7 @@ public class CalculadoraDePronosticos {
 		
 		
 		ArrayList<Ronda> listaRondas = new ArrayList<>();
-		
+		String cad="";
 		int cantRondas = metodosUtilitarios.cantRondas(listaPartidos);
 		System.out.println("Cant rondas: " + cantRondas);
 		for (int i = 0; i < cantRondas; i++) {
@@ -51,7 +51,8 @@ public class CalculadoraDePronosticos {
 		}
 		
 		for (int i = 0; i < listaRondas.size(); i++) {
-			listaRondas.get(i).mostrarPuntosRonda();
+			cad+=listaRondas.get(i).mostrarPuntosRonda();
 		}
+		return cad;
 	}
 }

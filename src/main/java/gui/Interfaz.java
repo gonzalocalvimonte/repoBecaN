@@ -5,6 +5,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import logica.Ronda;
+import proyectoIntMaven.CalculadoraDePronosticos;
+
 import javax.swing.JMenuItem;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
@@ -54,24 +58,10 @@ public class Interfaz extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
-		
+		//PANELES
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.NORTH);
 		panel.setLayout(new GridLayout(1, 2, 0, 15));
-		
-		JLabel lblNewLabel_1 = new JLabel("Puntos por acierto: ");
-		panel.add(lblNewLabel_1);
-		
-		JLabel lblNewLabel_2 = new JLabel("Puntos extra: ");
-		panel.add(lblNewLabel_2);
-		
-		JButton btnNewButton_1 = new JButton("Calcular");
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//ACA TENEMOS QUE LLAMAR AL METODO CALCULADORA CUANDO CLICKEAMOS EN CALCULAR
-			}
-		});
-		contentPane.add(btnNewButton_1, BorderLayout.SOUTH);
 		
 		JPanel panel_1 = new JPanel();
 		contentPane.add(panel_1, BorderLayout.CENTER);
@@ -90,6 +80,32 @@ public class Interfaz extends JFrame {
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		panel_1.add(scrollPane);
+		//LABELS
+		JLabel lblNewLabel_1 = new JLabel("Puntos por acierto: "+Ronda.getPuntosXAcierto()); //Al principio son cero
+		panel.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("Puntos extra: "+Ronda.getPuntosExtra());
+		panel.add(lblNewLabel_2);
+		//BOTON
+		JButton btnNewButton_1 = new JButton("Calcular");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//ACA TENEMOS QUE LLAMAR AL METODO CALCULADORA CUANDO CLICKEAMOS EN CALCULAR
+				System.out.println("Cree clase calculadora");
+				CalculadoraDePronosticos calc = new CalculadoraDePronosticos("../repoBecaN/resultados.txt","../repoBecaN/pronosticos.txt");
+				textArea.setText("Hice click en calcular!!!");
+				calc.calculadora();//Podria devolver un String con los resultados de cada ROnda tipo "Ronda:1\n P1:puntos\tP2:puntos\t...Pn:puntos
+				//Con el string devuelto puedo setear el texto del textArea.
+				lblNewLabel_1.setText("Puntos por acierto: "+Ronda.getPuntosXAcierto());
+				lblNewLabel_2.setText("Puntos extra: "+Ronda.getPuntosExtra());
+				textArea.setText(calc.calculadora());
+				
+				
+			}
+		});
+		contentPane.add(btnNewButton_1, BorderLayout.SOUTH);
+		
+
 	}
 
 }

@@ -32,16 +32,28 @@ public class Ronda {
     public static void setPuntosXAcierto(int num) {
     	puntosXAcierto=num;
     }
+    public static int getPuntosXAcierto() {
+    	return puntosXAcierto;
+    }
+    public static int getPuntosExtra() {
+    	return puntosExtra;
+    }
     public static void setPuntosExtra(int num) {
     	puntosExtra=num;
     }
-    public void mostrarPuntosRonda() { //este metodo usa el metodo private puntosPorRonda
+    public String mostrarPuntosRonda() { //este metodo usa el metodo private puntosPorRonda 
+    	//PODRIA MODIFICAR PARA QUE DEVUELVA UN STRING Y QUE DESPUES EL METODO CALCULCAR DE CALCULADORA DEVUELVA UN STRING CONCATENADO CON EL RESULTADO DE TODO.
     	puntosPorRonda();
+    	String cad="RONDA "+this.numRonda+"\n";
+    	//EL STRING DEBERIA TENER LA FORMA "RONDA NUM\nP1.nombre:puntos\nP2.nombre:puntos\n....
     	System.out.println("-----RONDA "+this.numRonda+"-----");
     	for(int i=0; i<this.personas.size();i++) {
-    		System.out.print(this.personas.get(i));
-    		System.out.println("-----------------------------");
+    		cad+=this.personas.get(i).toString()+"";
+    		//System.out.print(this.personas.get(i));
+    		//System.out.println("-----------------------------");
     	}
+   		//System.out.println(cad);
+   		return cad;
     }
     
     private void puntosPorRonda() {//este metodo usa el metodo private puntosXPersona

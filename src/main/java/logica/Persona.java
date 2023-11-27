@@ -41,8 +41,9 @@ public class Persona {
 	@Override
 	public String toString() {
 		String cad="";
-		cad+="Nombre: "+this.nombre +" ID: "+this.idPersona+"\n";
-		cad+="Puntos: "+this.PuntosXRonda+"\n";
+		//cad+="Nombre: "+this.nombre +" ID: "+this.idPersona+"\n";
+		//cad+="Puntos: "+this.PuntosXRonda+"\n";
+		cad+=this.nombre.toUpperCase()+" "+"\tPuntos: "+this.PuntosXRonda+"\n";
 		return cad;
 	}
 
