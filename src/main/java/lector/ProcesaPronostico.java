@@ -47,6 +47,7 @@ public class ProcesaPronostico {
 		}
 		return null;
 	}
+	
 	private Pronostico creaPronostico(int numeroRonda,int partidoNum,int pID, String equipo, ResultadoEnum resultado ) {
 		return new Pronostico(numeroRonda,partidoNum,pID,new Equipo(equipo), resultado);
 	}
@@ -61,6 +62,7 @@ public class ProcesaPronostico {
 			this.listaPersonas.add(creaPersona(Integer.parseInt(linea[2]),linea[3]));
 		}
 	}
+	
 	private Persona creaPersona(int idPersona, String nombre) {
 		return new Persona(idPersona,nombre);
 	}
