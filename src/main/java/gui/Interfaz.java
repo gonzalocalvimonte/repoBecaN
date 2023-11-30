@@ -25,6 +25,8 @@ import javax.swing.JSeparator;
 import java.awt.FlowLayout;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.BoxLayout;
+import javax.swing.JDesktopPane;
+import javax.swing.JMenu;
 
 public class Interfaz extends JFrame {
 
@@ -34,18 +36,7 @@ public class Interfaz extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Interfaz frame = new Interfaz();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the frame.
@@ -74,12 +65,25 @@ public class Interfaz extends JFrame {
 		textArea.setWrapStyleWord(true);
 		textArea.setLineWrap(true);
 		//contentPane.add(textArea, BorderLayout.CENTER);
-		textArea.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eu tincidunt tortor aliquam nulla facilisi cras fermentum. Purus in massa tempor nec. Aliquet risus feugiat in ante. Pellentesque diam volutpat commodo sed. Sed blandit libero volutpat sed cras. Laoreet id donec ultrices tincidunt arcu non sodales neque. Nisi quis eleifend quam adipiscing. Eleifend quam adipiscing vitae proin sagittis nisl. Non tellus orci ac auctor augue mauris. Velit euismod in pellentesque massa placerat duis ultricies lacus sed. Mi ipsum faucibus vitae aliquet nec ullamcorper. Vitae nunc sed velit dignissim sodales ut. Netus et malesuada fames ac turpis egestas integer. Sapien nec sagittis aliquam malesuada bibendum arcu vitae. Id neque aliquam vestibulum morbi blandit cursus risus at ultrices. Turpis egestas maecenas pharetra convallis posuere morbi. Egestas tellus rutrum tellus pellentesque eu tincidunt. In fermentum posuere urna nec tincidunt praesent semper.");
 		//panel_1.add(textArea);
 		JScrollPane scrollPane = new JScrollPane(textArea);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		panel_1.add(scrollPane);
+		
+		
+		
+		
+		/*JButton btnNewButton = new JButton("New button");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				InterfazCargaProno frameProno = new InterfazCargaProno();
+				frameProno.setVisible(true);
+			}
+		});
+		
+		scrollPane.setRowHeaderView(btnNewButton);*/
+		
 		//LABELS
 		JLabel lblNewLabel_1 = new JLabel("Puntos por acierto: "+Ronda.getPuntosXAcierto()); //Al principio son cero
 		panel.add(lblNewLabel_1);
@@ -88,10 +92,10 @@ public class Interfaz extends JFrame {
 		panel.add(lblNewLabel_2);
 		//BOTON
 		JButton btnNewButton_1 = new JButton("Calcular");
+		
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//ACA TENEMOS QUE LLAMAR AL METODO CALCULADORA CUANDO CLICKEAMOS EN CALCULAR
-				System.out.println("Cree clase calculadora");
 				CalculadoraDePronosticos calc = new CalculadoraDePronosticos("../repoBecaN/resultados.txt","../repoBecaN/pronosticos.txt");
 				textArea.setText("Hice click en calcular!!!");
 				calc.calculadora();//Podria devolver un String con los resultados de cada ROnda tipo "Ronda:1\n P1:puntos\tP2:puntos\t...Pn:puntos
